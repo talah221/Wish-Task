@@ -10,10 +10,10 @@ const getImages = catchAsync(async (req, res) => {
     const promises = apiUrls.map(url => fetchWrapper.fetcher(url, "GET"))
     const [photos, images] = await Promise.all(promises);
     const imagesAndPhotos = photos[0].concat(images[0])
-    const allImages = imagesAndPhotos.map(img => {
+    const allImages = imagesAndPhotos.map((img,idx) => {
         const { id, albumId, title, url, path } = img;
         const imageUrl = url || path;
-        return { id, albumId, title, imageUrl }
+        return { id:id+idx, albumId, title, imageUrl }
     })
     res.send(allImages);
 

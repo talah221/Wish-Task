@@ -13,6 +13,7 @@ const Home: NextPage = () => {
     setImages(imagesToSet)
   }
 
+
   useEffect(() => {
     (async () => {
       await loadImages()
@@ -30,9 +31,9 @@ const Home: NextPage = () => {
         </header>
 
         <div className='gallery'>
-          {images.map(img => {
+          {images.map((img) => {
             return <div key={img.id} className={"image-container"}>
-              <img src={img.imageUrl} alt={img.title} />
+              <img src={img.imageUrl}  alt={img.title} />
               <p>{img.title}</p>
             </div>
           })}
